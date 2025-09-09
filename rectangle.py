@@ -22,13 +22,14 @@ class Rectangle:
         xmax = self.position[0] + self.width
         ymin = self.position[1] - self.width
         ymax = self.position[1] + self.height
+        return xmin, ymin, xmax, ymax
 
 def main():
     rectangular = Rectangle(80, 100)
     print(f"{rectangular.perimeter() = } {rectangular.units}")
     print(f"{rectangular.area() = }{rectangular.units}^2")
     print(f"{rectangular.diagonal() =}{rectangular.units}")
-    print(f"{rectangular.bounding_box()} =")
+    print(f"{rectangular.bounding_box()} ")
 
     return 0
 
