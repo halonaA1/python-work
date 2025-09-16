@@ -1,5 +1,6 @@
 import sys
 import math
+import turtle
 
 
 class Circle:
@@ -36,6 +37,16 @@ class Circle:
         y_max = self.position[1] + self.radius
         return x_min, y_min, x_max, y_max
 
+    def draw_circle(self, pen):
+        pen.up()
+        pen.goto(self.position[0], self.position[1] - self.radius)
+        pen.down()
+        pen.begin_fill()
+        pen.pencolor(self.stroke)
+        pen.fillcolor(self.fill)
+        pen.circle(self.radius)
+        pen.up()
+
 
 class Rectangle:
     units = 'cm'
@@ -65,6 +76,21 @@ class Rectangle:
         y_max = self.position[1] + self.length / 2
         return x_min, y_min, x_max, y_max
 
+    def draw_rectangle(self, pen):
+        pen.up()
+        pen.goto(self.position[0], self.position[1] - self.length)
+        pen.down()
+        pen.begin_fill()
+        pen.pencolor(self.stroke)
+        pen.fillcolor(self.fill)
+        for _ in range(2):
+            pen.forward(self.width)
+            pen.right(90)
+            pen.forward(self.length)
+            pen.right(90)
+        pen.end_fill()
+        pen.up()
+
 class Square:
     units = 'cm'
 
@@ -88,10 +114,14 @@ class Square:
         y_max = self.position[1] + self.side / 2
         return x_min,y_min, x_max, y_max
 
-class Canvas:
-    def __init__(self, width, height):
+class Canvas(turtle.TurtleScreen):
+    def __init__(self, width = 1200, height = 750, background="white"):
+        canvas = turtle.getcanvas()
+        super().__init__(canvas)
         self.width = width
         self.height = height
+        turtle.screensize(width, height, background)
+
 
 class Text:
     def __init__(self, text, colour = 'red' ,position=(0, 0)):
@@ -99,8 +129,16 @@ class Text:
         self.position = position
         self.colour = colour
 
+class Square(Rectangle):
+    def __init__(self, side,fill= "brown", stroke ="black", position=(0, 0)):
+        super().__init__(side, side, fill , stroke  , position )
+    def __str__(self):
+        return f"square of side {self.width} {self.units} located at {self.position}."
 
 def main():
+    screen = turtle.Screen()
+    pen = turtle.Turtle()
+
     circle = Circle(radius=4)
     print(circle)
     circle.position = (12, 15)
@@ -110,6 +148,7 @@ def main():
     print(f"Circle perimeter = {circle.perimeter()} {circle.units}")
     print(f"Circle arc length = {circle.arc_length(0.5)} ")
     print(f" {circle.bounding_box() = }")
+    circle.draw_circle(pen)
 
     rectangle = Rectangle(100, 250)
     print(rectangle)
@@ -119,6 +158,8 @@ def main():
     print(f"Rectangle perimeter = {rectangle.perimeter()} {rectangle.units}")
     print(f"Rectangle diagonal = {rectangle.diagonal()} {rectangle.units}")
     print(f"{rectangle.bounding_box()} ")
+    rectangle.draw_rectangle(pen)
+
 
     square = Square(80)
     print(square)
