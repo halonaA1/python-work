@@ -65,6 +65,29 @@ class Rectangle:
         y_max = self.position[1] + self.length / 2
         return x_min, y_min, x_max, y_max
 
+class Square:
+    units = 'cm'
+
+    def __init__(self, side, fill="brown", stroke="black", position=(0, 0)):
+        self.side = side
+        self.position = position
+        self.fill = fill
+        self.stroke = stroke
+    def __str__(self):
+     return f"square of side {self.side} {self.units} located at {self.position}."
+    def area(self):
+        return self.side * self.side
+    def perimeter(self):
+        return self.side * 4
+    def diagonal(self):
+        return math.sqrt(self.side ** 2 + self.side ** 2 )
+    def bounding_box(self):
+        x_min = self.position[0] - self.side / 2
+        x_max = self.position[0] + self.side / 2
+        y_min = self.position[1] - self.side / 2
+        y_max = self.position[1] + self.side / 2
+        return x_min,y_min, x_max, y_max
+
 class Canvas:
     def __init__(self, width, height):
         self.width = width
@@ -96,6 +119,15 @@ def main():
     print(f"Rectangle perimeter = {rectangle.perimeter()} {rectangle.units}")
     print(f"Rectangle diagonal = {rectangle.diagonal()} {rectangle.units}")
     print(f"{rectangle.bounding_box()} ")
+
+    square = Square(80)
+    print(square)
+    square.position = (30, 40)
+    print(square)
+    print(f"Square area = {square.area()} {square.units}^2")
+    print(f"Square perimeter = {square.perimeter()} {square.units}")
+    print(f"square diagonal = {square.diagonal()} {square.units}")
+    print(f"{square.bounding_box()}")
 
     return 0
 
