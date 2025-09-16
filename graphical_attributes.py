@@ -65,6 +65,17 @@ class Rectangle:
         y_max = self.position[1] + self.length / 2
         return x_min, y_min, x_max, y_max
 
+class Canvas:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+class Text:
+    def __init__(self, text, colour = 'red' ,position=(0, 0)):
+        self.text = text
+        self.position = position
+        self.colour = colour
+
 
 def main():
     circle = Circle(radius=4)
@@ -84,7 +95,7 @@ def main():
     print(f"Rectangle area = {rectangle.area()} {rectangle.units}^2")
     print(f"Rectangle perimeter = {rectangle.perimeter()} {rectangle.units}")
     print(f"Rectangle diagonal = {rectangle.diagonal()} {rectangle.units}")
-    print(f"{rectangle.bounding_box()} = ")
+    print(f"{rectangle.bounding_box()} ")
 
     return 0
 
