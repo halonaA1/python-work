@@ -116,11 +116,25 @@ class Square:
 
 class Canvas(turtle.TurtleScreen):
     def __init__(self, width = 1200, height = 750, background="white"):
-        canvas = turtle.getcanvas()
-        super().__init__(canvas)
+        self.canvas = turtle.getcanvas()
+        super().__init__(self.canvas)
         self.width = width
         self.height = height
         turtle.screensize(width, height, background)
+        self.pen = turtle.RawPen(self.canvas)
+
+    def mystery_method(self):
+        self.pen.up()
+        self.pen.goto(0, self.height/ 2)
+        self.pen.down()
+        self.pen.goto(0, -self.height/ 2)
+        self.pen.up()
+        self.pen.goto(-self.width / 2, 0)
+        self.pen.up()
+        self.pen.goto(self.width / 2, 0)
+        self.pen.up()
+        self.pen.home()
+
 
 
 class Text:
