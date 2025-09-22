@@ -18,9 +18,23 @@ class TextShape(Shape):
 
     def draw(self, canvas):
         canvas.create_text(self.position[0], self.position[1], text=self.text, font = ("Times New Roman", 14), fill= "brown")
+
+def get_the_matrix(name):
+    rows = int(input(f"Number of rows for matrix{name}: "))
+    cols = int(input(f"Number of columns for matrix{name}:"))
+    print(f"Enter elements for matrix{name} row by row: ")
+    elements = []
+    for i in range(rows):
+        row = list(map(float, input(f"Row{i + 1}: ").split()))
+        while len(row) != cols:
+            print(f"Enter exact values.")
+            row = list(map(float, input(f"Row{1 + 1}: ").split()))
+        elements.append(row)
+    return np.array(elements)
+
 def main():
-    A = np.array([[1, 2], [3, 4]])
-    B = np.array([[5, 6], [7, 8]])
+    A = get_the_matrix("A")
+    B = get_the_matrix("B")
 
     add_result = A + B
     mult_result = A * B
