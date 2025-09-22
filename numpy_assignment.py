@@ -2,7 +2,6 @@ import sys
 import math
 import turtle
 import numpy as np
-import tkinter as tk
 
 class Shape:
     def __init__(self, name):
@@ -50,6 +49,7 @@ def main():
     print("\nA @ B (matrix product) =\n", matmul_result)
     print(f"\n||A|| = {norm_A: .2f}")
     print(f"||B|| = {norm_B: .2f}")
+
 
     screen = turtle.Screen()
     screen.title("Turtle Window")
