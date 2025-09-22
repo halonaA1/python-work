@@ -153,9 +153,9 @@ def main():
     screen = turtle.Screen()
     pen = turtle.Turtle()
 
-    circle = Circle(radius=4)
+    circle = Circle(radius=60)
     print(circle)
-    circle.position = (12, 15)
+    circle.position = (150, 100)
     print(circle)
     print(f"Circle diameter: {circle.diameter} {circle.units} ")
     print(f"Circle area = {circle.area()} {circle.units}^2")
@@ -164,9 +164,9 @@ def main():
     print(f" {circle.bounding_box() = }")
     circle.draw_circle(pen)
 
-    rectangle = Rectangle(100, 250)
+    rectangle = Rectangle(300, 500)
     print(rectangle)
-    rectangle.position = (25, 40)
+    rectangle.position = (0,0)
     print(rectangle)
     print(f"Rectangle area = {rectangle.area()} {rectangle.units}^2")
     print(f"Rectangle perimeter = {rectangle.perimeter()} {rectangle.units}")
@@ -175,9 +175,9 @@ def main():
     rectangle.draw_rectangle(pen)
 
 
-    square = Square(80)
+    square = Square(90)
     print(square)
-    square.position = (30, 40)
+    square.position = (150, 0)
     print(square)
     print(f"Square area = {square.area()} {square.units}^2")
     print(f"Square perimeter = {square.perimeter()} {square.units}")
