@@ -1,5 +1,8 @@
 import sys
 import matplotlib.pyplot as plt
+import pandas as pd
+
+
 
 def ivory_coast_table():
     col_labels = ["Year", "Area Harvested(ha)", "Yield(t/ha)", "Production"]
