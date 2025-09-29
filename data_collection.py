@@ -45,39 +45,6 @@ class IvoryCoast(CountryData):
     def __init__(self):
         super().__init__("Côte d'Ivoire")
 
-def plot_combined(ghana, ivory_coast, output_file="combined_plots.pdf"):
-    fig, ax = plt.subplots(2,2, figsize=(12, 8))
-    fig.suptitle("Ghana and Ivory Coast data analytics", fontsize=14, fontweight="bold")
-
-    ax[0,0].scatter(ghana.data["Year"], ghana.data["Yield"], color="tab:blue")
-    ax[0,0].set_title("Ghana - yield over years")
-    ax[0,0].set_xlabel("Year")
-    ax[0,0].set_ylabel("Yield")
-    ax[0,0].grid(True, linestyle="--", alpha=0.8)
-
-    ax[0,1].scatter(ivory_coast.data["Year"], ivory_coast.data["Yield"], color="tab:green")
-    ax[0,1].set_title("Ivory Coast - yield over years")
-    ax[0,1].set_xlabel("Year")
-    ax[0,1].set_ylabel("Yield")
-    ax[0,1].grid(True, linestyle="--", alpha=0.8)
-
-    ax[1,0].bar(ghana.data["Year"], ghana.data["Area harvested"], color="tab:blue")
-    ax[1,0].set_title("Ghana - area harvested")
-    ax[1,0].set_xlabel("Year")
-    ax[1,0].set_ylabel("Area harvested")
-    ax[1,0].grid(True, linestyle="--", alpha=0.8)
-
-    ax[1,1].bar(ivory_coast.data["Year"], ivory_coast.data["Area harvested"], color="tab:green")
-    ax[1,1].set_title("Ivory Coast - area harvested")
-    ax[1,1].set_xlabel("Year")
-    ax[1,1].set_ylabel("Area harvested")
-    ax[1,1].grid(True, linestyle="--", alpha=0.8)
-
-    plt.tight_layout(rect=(0,0,1,1))
-
-    fig.savefig(output_file)
-    plt.show()
-    print(f"Combined plot saved as {output_file}")
 
 def main():
     filepath = "./data/FAOSTAT_data_7-23-2022.csv"
